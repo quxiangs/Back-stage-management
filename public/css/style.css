@@ -1,8 +1,46 @@
 body {
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  background: url(/images/reigsterbg.jpg) no-repeat;
+  background-size: 100%;
 }
-
+*{
+  padding: 0;
+  margin: 0;
+}
 a {
   color: #00B7FF;
+  text-decoration: none;
+}
+ .container .cf-b{
+    text-align-last: justify;
+}
+.container{
+  border: rgb(254, 190, 172,0.5) solid 2px
+}
+.con-h1{
+ text-align: center;
+ color: #169BD5;
+ margin-bottom: 30px;
+}
+.form-group{
+  margin-bottom: 25px;
+  color: rgb(24, 177, 238);
+}
+.form-group input{
+  outline: none;
+}
+.fb-c .col-sm-9{
+  margin-top: 5px;
+}
+#radio1{
+  color: aqua;
+  margin-left: 20px
+}
+#span{
+  margin-left: 30px;
+  color:#169BD5;
+}
+.btn{
+  padding: 5px 25px;
 }
