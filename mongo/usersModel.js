@@ -6,13 +6,12 @@
 //查询列表操作
 const MongoClient = require('mongodb').MongoClient;
 const url = 'mongodb://127.0.0.1:27017';
-
 const usersModel = {
     /**
-   *     注册操作
-   *     @param {Object} data 注册信息
-   *    @param {Function} cb 回调函数
-   */
+    *     注册操作
+    *     @param {Object} data 注册信息
+    *    @param {Function} cb 回调函数
+    */
     add(data,cb){
         MongoClient.connect(url,function(err,client){
             if(err) throw err;
@@ -42,7 +41,7 @@ const usersModel = {
                         });
                     });
                 }else{
-                    console.log("00000000")
+                    // console.log("00000000")
                     cd('已经注册过了');
                     client.close();
                 }
