@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="/css/reset.css">
+    <link rel="stylesheet" href="/css/index.css">
+    <link rel="stylesheet" href="/css/moblie-manager.css">
+</head>
+<body>
+    <div class="index">
+        <%- include('./header.ejs')%>
+        <div class="container">
+            <%- include('./menu.ejs',{isAdmin:isAdmin}) %>
+            <div class="main moblie">
+                <div class="top">
+                    <p>新增手机</p>
+                </div>
+                <!-- 弹出框 -->
+                <div class="addshoping">
+                    <h2 onselectstart="return false">添加手机信息</h2>
+                    <div class="add">
+                        <div>
+                            <label>名称:</label>
+                            <input type="text" placeholder="请输入手机名称" name="model" class="model">
+                        </div>
+                        <div>
+                            <label>品牌:</label>
+                            <select>
+                                <option value="volvo">华为</option>
+                                <option value="saab">小米</option>
+                                <option value="mercedes">三星</option>
+                                <option value="audi">魅族</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label>官方指导价:</label>
+                            <input type="text" placeholder="请输入官方指导价" name="price" class="price">
+                        </div>
+                        <div>
+                            <label>二手回收价:</label>
+                            <input type="text" placeholder="请输入二手回收价" name="usedprice" class="usedprice">
+                        </div>
+                        <div>
+                            <label>图片:</label>
+                            <input type="file"  name="papers" class="papers">
+                        </div>
+                        <div>
+                            <div class="f-c" onselectstart="return false" id="sub">提交</div>
+                            <div class="f-c" id="cancel" onselectstart="return false">取消</div>
+                        </div>
+                    </div>
+                </div>
+        </div>
+    </div>
+</body>
+
+</html>

@@ -1,4 +1,10 @@
-<div class="menu">
-    <p>用户管理</p>
-    <p>手机列表</p>
-</div>
+<ul class="menu">
+    <% if (isAdmin) {%>
+        <li>
+            <a href="/user-manager.html" class="user">用户管理</a>
+         </li>
+    <% } %>
+    <li>
+        <a href="/moblie-manager.html" class="phoneList">手机列表</a>
+    </li>
+</ul>

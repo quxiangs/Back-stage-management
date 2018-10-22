@@ -3,18 +3,26 @@
     height: 100%;
     flex-direction: column;
 }
+.header .logo{
+    width: 215px;
+    height: 100%;
+    background: url(/images/logo_01.png) no-repeat 13px 0;
+    background-size: 190px;
+}
 .header{
     display: flex;
     width: 100%;
+    color: antiquewhite;
     height: 80px;
     align-items: center;
-    border: 1px solid rebeccapurple;
     justify-content: space-between;
+    background: #58646d;
 }
 .header_left{
-    margin-left: 120px;
+    margin-left: 45px;
     font-size: 30px;
     flex: 1;
+    font-family: SimSun;
 }
 .heared_right{
     margin-right: 80px;
@@ -25,43 +33,64 @@
 }
 .heared_right p{
     font-size: 16px;
-    margin-top: 4px;
+    margin-top: 7px;
 }
 .heared_right a{
-    margin-top: 4px;
-    border-radius:5px;
-    width: 90px;
+    margin-top: 10px;
+    width: 50px;
     text-align: center;
     height: 25px;
     line-height: 26px;
-    margin-left: 50px;
+    margin-left: 30px;
     text-decoration: none;
     display: inline-block;
     color: #cccccc;
-    border: 1px salmon solid;
+    cursor: default;
+
+}
+.heared_right a span {
+    position: relative;
+    top: 1px;
+    cursor: default;
+    margin-left: 2px;
+    margin-right: 2px;
 }
 .container{
     display: flex;
     flex: 1;
-    background: rebeccapurple;
     width: 100%;
 }
+.index #pagination {
+    padding-right: 0;
+    padding-left: 0;
+}
 .container .menu{
+    background: #5B5B5B;
     font-size: 20px;
-    padding: 0px 20px;
-    margin-left: 100px;
-    width: 230px;
-    border: #cccccc solid 1px;
+    width: 148px;
 }
-.container .menu p{
-    color: white;
-   margin-top: 50px;
+.menu li {
+   text-align: center;
+}
+.container .menu a{
+    text-decoration: none;
+    display: block;
+    padding: 10px 0;
+    border: 1px solid #bfb2b2;
+    border-left: 0;
+    border-right: 0;
+    color: #f1eeee;
    cursor: default;
+   border-radius: 2px;
 }
+/* .menu a.user {
+   background: whitesmoke;
+   color: #b9807f;
+} */
 .container .main{
-   flex: 1;
-   margin-left: 25px;
+    flex: 1;
     border: #cccccc solid 1px;
+    background: #E0E0E0;
 }
 .main p{
     text-align: center;
