@@ -89,8 +89,10 @@
 } */
 .container .main{
     flex: 1;
-    border: #cccccc solid 1px;
-    background: #E0E0E0;
+
+    background: #c18e8e;
+
+
 }
 .main p{
     text-align: center;

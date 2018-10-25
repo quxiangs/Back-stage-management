@@ -22,11 +22,11 @@
         <%- include('./header.ejs')%>
         <div class="container">
             <%- include('./menu.ejs',{isAdmin:isAdmin}) %>
-            <div class="main user-main">
+            <div class="main user-main" id="usermain">
                 <div class="Img">
                 
                 </div>
-                <form action="/users/updata" method="post" class="update_form">
+                <form action="/users/updata" method="post" class="update_form" autocomplete="off">
                     <h4>用户信息修改</h4>
                     <div style="display:none">
                         <label>page:</label>
@@ -65,7 +65,7 @@
                         <input type="radio" name="sex" value="1">男
                         <input type="radio" name="sex" value="0" checked>女
                     </div>
-                    <div>
+                    <div id="isadmin">
                         <label>管理员:</label>
                         <input type="radio" name="isAdmin" value="1">yes
                         <input type="radio" name="isAdmin" value="0" checked>no
@@ -128,45 +128,7 @@
                         <% } %>
                     </tbody>
                 </table>
-                <nav>
-                    <ul class="pagination">
-                        <li>
-                            <a class="Previous">
-                                <span>&laquo;</span>
-                            </a>
-                        </li>
-                        <li class="move">
-                            <ol>
-                                <% if(nicknameurl){%>
-                                <% for(var t = 0; t < totalPage; t++){ %>
-                                <%if (page == t+1){ %>
-                                <li><a href="/search?nickname=<%= nicknameurl%>&page=<%= t+1%>" class="user_active">
-                                        <%= t+1%></a></li>
-                                <% } else {%>
-                                <li><a href="/search?nickname=<%= nicknameurl%>&page=<%= t+1%>">
-                                        <%= t+1%></a></li>
-                                <% }%>
-                                <% }%>
-                                <% } else { %>
-                                <% for(var t = 0; t < totalPage; t++){ %>
-                                <%if (page == t+1){ %>
-                                <li><a href="/user-manager.html?page=<%= t+1%>" class="user_active">
-                                        <%= t+1%></a></li>
-                                <% } else {%>
-                                <li><a href="/user-manager.html?page=<%= t+1%>">
-                                        <%= t+1%></a></li>
-                                <% }%>
-                                <% }%>
-                                <% }%>
-                            </ol>
-                        </li>
-                        <li>
-                            <a class="Next">
-                                <span>&raquo;</span>
-                            </a>
-                        </li>
-                    </ul>
-                </nav>
+                 <%- include('./navList.ejs')%>
             </div>
         </div>
     </div>

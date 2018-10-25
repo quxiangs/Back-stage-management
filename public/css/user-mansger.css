@@ -1,5 +1,7 @@
 
-
+.container #usermain {
+    background: #E0E0E0;
+}
 .box {
     border: #1c4b5f 1px solid;
     height: 100%;
@@ -100,7 +102,7 @@ th{
     border: 1px solid #bfb2b2; 
 }
 #userli td{
-    padding: 8px 15px;
+    height: 40px;
 }
 .last{
     margin-left: 5px;
@@ -194,6 +196,7 @@ a{
     border-bottom-right-radius: 5px;
     border-right: 1px solid #bfb2b2;
 }
+
 .Img{
     width: 825px;
     height: 285px;
@@ -206,8 +209,8 @@ a{
 }
 nav {
     position: absolute;
-    right: 265px;
-    bottom: 120px;
+    left: 38%;
+    bottom: 110px;
     background: white;
     overflow: hidden;
     border-radius: 5px;

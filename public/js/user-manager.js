@@ -3,7 +3,7 @@ $(function () {
     if (!document.cookie) {
         location.reload();
     }
-    console.log(document.cookie)
+    
     $(".Previous").on('click', function () {
         // alert(8)
     });
@@ -26,6 +26,10 @@ $(function () {
         $(".username").val($(this).parent().parent().eq(0).find('td').eq(1).html());
         $(".nickname").val($(this).parent().parent().eq(0).find('td').eq(2).html());
         $(".phone").val($(this).parent().parent().eq(0).find('td').eq(3).html());
+        var userNmae = $(this).parent().parent().eq(0).find('td').eq(1).html();
+        if (userNmae == document.cookie.split(";")[0].split("=")[1]){
+            $('#isadmin').css('display','none');
+        }
     });
     //判断信息内容是否为空
     if ($('.tbody').css('height') <= "0px") {

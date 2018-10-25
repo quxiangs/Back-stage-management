@@ -88,14 +88,14 @@ router.post('/updata', function (req, res) {
         console.log('用户信息修改失败', err);
       } else {
         if (nicknameurl) {
-          res.redirect('/search?nickname=' + nicknameurl + '&' + 'page=' + page);
+          res.redirect('/search?nickname='+nicknameurl+'&'+'page='+page);
         } else {
           if (req.cookies.username == req.body.username) {
             res.cookie('nickname', req.body.nickname, {
               maxAge: 1000 * 60 * 100000,
             });
-            res.redirect('/user-manager.html?page=' + page);
           }
+          res.redirect('/user-manager.html?page=' + page);
         }
       }
     });

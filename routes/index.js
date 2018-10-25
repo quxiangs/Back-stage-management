@@ -52,22 +52,9 @@ router.get('/user-manager.html', function (req, res) {
     res.redirect('/login.html');
   }
 });
-//手机管理页面
-router.get('/moblie-manager.html', function (req, res) {
-  //同首页 判断是否用户登录，用户是否是管理员
-  if (req.cookies.username && parseInt(req.cookies.isAdmin)) {
-    res.render('moblie-manager', {
-      username: req.cookies.username,
-      nickname: req.cookies.nickname,
-      isAdmin: parseInt(req.cookies.isAdmin) ? '(管理员)' : ''
-    });
-  } else {
-    res.redirect('/login.html');
-  }
-});
+
 //查询用户数据处理
 router.get('/search', function (req, res) {
-
   if (req.cookies.username && parseInt(req.cookies.isAdmin)) {
     var nickname = new RegExp(req.query.nickname);
     var nicknameurl = req.query.nickname;
@@ -118,5 +105,32 @@ router.get('/delete', function (req, res) {
       }
     }
   });
+});
+
+//品牌管理页面
+router.get('/phone-type.html', function (req, res) {
+  //同首页 判断是否用户登录，用户是否是管理员
+  if (req.cookies.username) {
+    res.render('phone-type', {
+      username: req.cookies.username,
+      nickname: req.cookies.nickname,
+      isAdmin: parseInt(req.cookies.isAdmin) ? '(管理员)' : ''
+    });
+  } else {
+    res.redirect('/login.html');
+  }
+});
+//手机管理页面
+router.get('/moblie-manager.html', function (req, res) {
+  //同首页 判断是否用户登录，用户是否是管理员
+  if (req.cookies.username) {
+    res.render('moblie-manager', {
+      username: req.cookies.username,
+      nickname: req.cookies.nickname,
+      isAdmin: parseInt(req.cookies.isAdmin) ? '(管理员)' : ''
+    });
+  } else {
+    res.redirect('/login.html');
+  }
 });
 module.exports = router;
