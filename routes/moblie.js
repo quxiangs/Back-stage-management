@@ -40,13 +40,13 @@ router.post('/add', multer.single('file'), function (req, res) {
                             console.log('商品添加失败',err);
                         } else {
                             console.log('商品添加成功');
+                            res.send({ code: 0, msg:'商品添加成功'});
                         }
                     })
                 }
             })
         }
     })
-    res.send();
 });
 //商品信息加载
 router.get('/load',function(req,res){

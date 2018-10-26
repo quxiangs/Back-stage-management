@@ -12,18 +12,34 @@ $(function(){
               pageSize:pageSize
           },
           success:function(res){
+            console.log(res)
+              var arr = [];
+              for (var i = 1; i < res.COUNT + 1; i++) {
+                  arr.push(i);
+              }
+              let baseArray = arr;
+              let len = baseArray.length;
+              let n = pageSize; //假设每行显示3个
+              let lineNum = len % pageSize === 0 ? len / pageSize : Math.floor((len / pageSize) + 1);
+              let newArr = [];
+              for (let i = 0; i < lineNum; i++) {
+                  let temp = baseArray.slice(i * n, i * n + n);
+                  newArr.push(temp);
+              }
+              console.log(newArr)
             var html = "";
             var list = "";
                 for (var i = 0; i < res.shopingList.length;i++){
                     html += `
                         <tr>
-                            <td>${res.shopingList[i]._id}</td>
+                            <td class="OneTd">${res.shopingList[i]._id}</td>
                             <td> <img src = "phoneImg/${res.shopingList[i].url}"/></td>
                             <td>${res.shopingList[i].logo}</td>
                             <td>
                                 <span class="typeUpdate">修改</span>
                                 <span class="typeDelete">删除</span>
                             </td>
+                            <td class="lastTd">${newArr[page-1][i]}</td>
                         </tr>`;
                 }
               $('.tbody').html(html);

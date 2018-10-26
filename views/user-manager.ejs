@@ -97,9 +97,22 @@
                     </thead>
                         <!-- 循坏 userList 显示用户数据 -->
                     <tbody class="tbody">
+                       <% var arr = []%>
+                        <% for (var p = 1; p < COUNT + 1; p++) {%>
+                             <% arr.push(p)%> 
+                        <% } %>
+                        <%let baseArray=arr%> 
+                        <%let len=baseArray.length%> 
+                        <%let n=pageSize%>
+                        <%let lineNum=len % pageSize===0 ? len / pageSize : Math.floor((len / pageSize) + 1)%> 
+                        <%let newArr=[]%> 
+                            <%for(let q=0; q < lineNum; q++) {%>
+                                <%let temp=baseArray.slice(q * n, q * n + n)%> 
+                            <% newArr.push(temp)%> 
+                        <% }%>
                         <% for (let i=0; i < userList.length ; i ++ ) { %>
                         <tr>
-                            <td><%= userList[i]._id %></td>
+                            <td class="OneTd"><%= userList[i]._id %></td>
                             <td><%= userList[i].username%></td>
                             <td> <%= userList[i].nickname%></td>
                             <td> <%= userList[i].phone%></td>
@@ -123,6 +136,9 @@
                                         <a href="/delete?delnum=<%= userList[i]._id%>&page=<%= page%>" class="last">删除</a>
                                         <% }%>
                                 <% }%>
+                            </td>
+                            <td class="lastTd">
+                                <%= newArr[page-1][i] %>
                             </td>
                         </tr>
                         <% } %>

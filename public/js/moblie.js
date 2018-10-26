@@ -3,6 +3,18 @@ $(function () {
     var pageSize = 3;
     getList();
     typePhone();
+    UP();
+    function UP() {
+        if (parseInt($('tbody').css('height')) < 95) {
+            $('.listdiv').hide();
+            $('thead').hide();
+            $('#defind').show()
+        } else {
+            $('.listdiv').show();
+            $('thead').show();
+            $('#defind').hide()
+        }
+    }
     //全局加载手机信息
     function getList() {
         $.ajax({
@@ -13,7 +25,20 @@ $(function () {
                 pageSize: pageSize
             },
             success: function (res) {
-                console.log(page)
+                var arr =[];
+                for(var i = 1;i<res.COUNT+1;i++){
+                    arr.push(i);
+                }
+                let baseArray = arr;
+                let len = baseArray.length;
+                let n = pageSize; //假设每行显示pageSize个
+                let lineNum = len % pageSize === 0 ? len / pageSize : Math.floor((len / pageSize) + 1);
+                let newArr = [];
+                for (let i = 0; i < lineNum; i++) {
+                    let temp = baseArray.slice(i * n, i * n + n);
+                    newArr.push(temp);
+                }
+               
                 var str = '';
                 var strList = '';
                 //商品
@@ -21,7 +46,7 @@ $(function () {
                     var imgUrl = res.shopingList[i].url.split("\\public\\")[1];
                     str += `
                     <tr>
-                        <td>${res.shopingList[i]._id}</td>
+                        <td class='oneTd'>${res.shopingList[i]._id}</td>
                         <td>
                         <img src="${imgUrl}" alt="">
                         </td>
@@ -32,6 +57,9 @@ $(function () {
                         <td>
                             <span class="upData">修改</span>
                             <span class="noData">删除</span>
+                         </td>
+                         <td class="numlist">
+                           ${newArr[page - 1][i]}
                          </td>
                     </tr>
                 `;
@@ -56,7 +84,6 @@ $(function () {
             success:function(res){
                 var newString = '<label>品牌</label>' + '<select name="uptype" class="uptype">';
                 for (var i = 0; i < res.length; i++) {
-                    console.log(res[i]);
                     newString += `
                         <option value="${res[i].logo}">${res[i].logo}</option>
                     `;
@@ -65,7 +92,6 @@ $(function () {
                 $('#TypePhone').html(newString)
                 var htmlStr = '<label>品牌</label>'+'<select name="type" class="type">';
                 for (var i = 0; i < res.length; i++) {
-                    console.log(res[i]);
                     htmlStr += `
                         <option value="${res[i].logo}">${res[i].logo}</option>
                     `;
@@ -99,7 +125,6 @@ $(function () {
         newData.append("price", price);
         newData.append("usedprice", usedprice);
         newData.append("file", fileObj);
-        console.log(newData);
         $.ajax({
             type: "post",
             url: "/moblie/add",
@@ -108,10 +133,16 @@ $(function () {
             processData: false,//用于对data参数进行序列化处理 这里必须false
             contentType: false, //必须
             success: function (res) {
-                console.log(res);
-                // location.href = "/moblie-manager.html?page=" + page;
+                if (parseInt($('tbody').css('height')) < 95) {
+                    console.log('+++++++++555   +++++++++')
+                    $('thead').show()
+                    $('listdiv').show()
+                    $('#defind').hide()
+                } else {
+                    console.log('+++++++++444+++++++++')
+                    $('#defind').hide()
+                }
                 getList();
-
             }
         });
     });
@@ -146,6 +177,8 @@ $(function () {
     $('tbody').on('click', '.noData', function () {
         var id = $(this).parent().parent().find('td').eq(0).html();
         console.log(id)
+        // console.log( )
+
         $.ajax({
             type: 'post',
             url: '/moblie/deleteshoping',
@@ -153,16 +186,33 @@ $(function () {
                 _id: id
             },
             success: function (res) {
-                console.log($('tbody').css('height'))
-                if ($('tbody').css('height') <= '1px' ){
-                    page = page -1;
+    var heightNum = parseInt($('tbody').css('height'))
+                console.log(heightNum)
+                if ( heightNum < 96){
+                    if(page<=1){
+                        page=1;
+                        $('#defind').show()
+                        $('thead').hide()
+                        $('listdiv').hide()
+                        getList();
+                    }else {
+                        $('#defind').hide()
+                        $('thead').show()
+                        $('listdiv').show()
+                        page = page -1;
+                    }
                 }else {
+                    $('#defind').hide()
+                    $('thead').show()
+                    $('listdiv').show()
                     page = page;
                 }
+                console.log(page)
                 getList();
             }
         });
     });
+    // var heightNum = parseInt($('tbody').css('height'))
     //提交修改信息
     $('#updataShoping').on('click', function () {
         $('.updatashoping').css('display', 'none');
@@ -193,5 +243,11 @@ $(function () {
             }
         });
     })
-
+    console.log(parseInt($('tbody').css('height')))
+    if (parseInt($('tbody').css('height'))<95){
+        $('#defind').show()
+    }else {
+        $('#defind').hide()
+    }
+    
 });

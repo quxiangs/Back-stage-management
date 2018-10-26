@@ -98,6 +98,15 @@ th{
     /* padding-left: 44px; */
 }
 
+.tbody tr .lastTd {
+    position: absolute;
+    left: 159px;
+    text-align: center;
+    line-height: 40px;
+}
+.tbody tr .OneTd {
+    opacity: 0;
+}
 #userli{
     border: 1px solid #bfb2b2; 
 }

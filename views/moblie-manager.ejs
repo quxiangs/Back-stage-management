@@ -6,6 +6,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+    <style>
+    #defind {
+        display: none;
+        border: white 1px solid;
+        border-top: 0; 
+        width: 876px;
+        height: 285px;
+        position:absolute;
+        left: 180px;
+        top: 167px;
+        background: url(/images/none.png) no-repeat 69px 55px;
+        background-color: white;
+            box-shadow: 0px 0px 11px rgb(121, 112, 112);;
+        z-index: 5
+    }
+    .main #defind p {
+        color: #267ca0;
+        margin-left: 200px;
+    }
+    
+    
+    
+    
+    </style>
     <link rel="stylesheet" href="/css/reset.css">
     <link rel="stylesheet" href="/css/index.css">
     <link rel="stylesheet" href="/css/moblie-manager.css">
@@ -22,6 +46,12 @@
         <div class="container">
             <%- include('./menu.ejs',{isAdmin:isAdmin}) %>
             <div class="main moblie">
+
+                <div id="defind">
+                    <p>请增加手机信息......</p>
+                </div>
+
+
                 <div class="top">
                     <p>新增手机</p>
                 </div>
@@ -77,12 +107,7 @@
                         <div id="TypePhone">
                             <label>品牌</label>
                             <select name="uptype" class="uptype">
-                                <option value="苹果">苹果</option>
-                                <option value="华为">华为</option>
-                                <option value="小米">小米</option>
-                                <option value="三星">三星</option>
-                                <option value="魅族">魅族</option>
-                                <option value="vivo">vivo</option>
+                                
                             </select>
                         </div>
                         <div>
@@ -120,7 +145,7 @@
                             <th>操作</th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody id="typeBox">
                         <tr>
                             <td>1</td>
                             <td>

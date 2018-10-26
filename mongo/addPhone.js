@@ -121,7 +121,8 @@ const addPhone = {
                         cd(null, {
                             shopingList: results[1],
                             totalPage: Math.ceil(results[0] / data.pageSize),
-                            page: data.page
+                            page: data.page,
+                            COUNT: results[0]
                         });
                     }
                     client.close();

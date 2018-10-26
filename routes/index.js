@@ -44,7 +44,9 @@ router.get('/user-manager.html', function (req, res) {
           userList: data.userList,
           totalPage: data.totalPage,
           page: data.page,
-          nicknameurl: nicknameurl
+          pageSize:pageSize,
+          nicknameurl: nicknameurl,
+          COUNT: data.COUNT
         });
       }
     });
@@ -71,6 +73,8 @@ router.get('/search', function (req, res) {
         if (err) {
           console.log('失败', err);
         } else {
+          console.log('+++++++++++++++++')
+          console.log(data)
           res.render('user-manager', {
             username: req.cookies.username,
             nickname: req.cookies.nickname,
@@ -78,7 +82,9 @@ router.get('/search', function (req, res) {
             userList: data.results,
             totalPage: data.totalPage,
             page: data.page,
-            nicknameurl: nicknameurl
+            pageSize:data.pageSize,
+            nicknameurl: nicknameurl,
+             COUNT: data.COUNT
           });
         }
       });

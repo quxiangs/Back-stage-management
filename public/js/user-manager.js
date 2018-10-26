@@ -28,6 +28,7 @@ $(function () {
         $(".phone").val($(this).parent().parent().eq(0).find('td').eq(3).html());
         var userNmae = $(this).parent().parent().eq(0).find('td').eq(1).html();
         if (userNmae == document.cookie.split(";")[0].split("=")[1]){
+            console.log('5555555555555')
             $('#isadmin').css('display','none');
         }
     });

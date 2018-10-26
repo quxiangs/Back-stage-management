@@ -178,6 +178,7 @@ const usersModel = {
                             userList: results[1], //用户的信息数据
                             totalPage: Math.ceil(results[0] / data.pageSize),
                             page: data.page,
+                            COUNT: results[0]
                         });
                     }
                     client.close();
@@ -226,7 +227,9 @@ const usersModel = {
                         cd(null, {
                             results: results[0],
                             totalPage: Math.ceil(results[1] / nickname.pageSize),
-                            page: nickname.page
+                            page: nickname.page,
+                            pageSize: nickname.pageSize,
+                            COUNT: results[1]
                         });
                     }
                 });

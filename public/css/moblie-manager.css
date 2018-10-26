@@ -146,6 +146,22 @@ label {
     width: 125px;
     height: 95px;
 }
+/* #typeBox tr {
+    position: relative;
+    
+} */
+#typeBox td.numlist {
+    border: 0;
+    position: absolute;
+    left: 180px;
+    text-align: center;
+    line-height: 95px;
+}
+#typeBox td.oneTd {
+    opacity: 0;
+}
+
+
 .info th {
     padding: 10px 25px;
     border: #1c4b5f 1px solid;

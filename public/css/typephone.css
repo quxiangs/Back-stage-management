@@ -17,6 +17,20 @@
     width: 105px;
     height: 76px;
 }
+
+.tbody {
+    position: relative;
+}
+ .tbody td.OneTd {
+    opacity: 0;
+ }
+ .tbody td.lastTd {
+     position: absolute;
+     left: 180px;
+     border: 0;
+     text-align: center;
+     line-height: 76px;
+ }
 .info th {
     padding: 0;
     border: #1c4b5f 1px solid;
